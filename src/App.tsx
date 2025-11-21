@@ -1,5 +1,5 @@
 
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { EditorLayout } from './components/EditorLayout';
 
 import { Preview } from './components/Preview';
