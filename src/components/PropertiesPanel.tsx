@@ -249,6 +249,16 @@ export const PropertiesPanel = () => {
                                     className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-sm"
                                 />
                             </div>
+                            <div className="space-y-2 col-span-2">
+                                <label className="text-xs text-gray-400">Layer (Z-Index)</label>
+                                <input
+                                    type="number"
+                                    value={selectedElement.style.zIndex?.toString() || ''}
+                                    onChange={(e) => handleStyleChange('zIndex', e.target.value)}
+                                    className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-sm"
+                                    placeholder="auto"
+                                />
+                            </div>
                         </div>
                     )}
                 </div>

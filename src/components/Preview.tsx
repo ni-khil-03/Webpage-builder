@@ -1,5 +1,7 @@
 import { useEditorStore } from '../store/useEditorStore';
 import type { EditorElement } from '../types';
+import { useNavigate } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 
 const PreviewElement = ({ element }: { element: EditorElement }) => {
     const handleClick = async () => {
@@ -56,15 +58,24 @@ const PreviewElement = ({ element }: { element: EditorElement }) => {
 
 export const Preview = () => {
     const { pages, currentPageId } = useEditorStore();
+    const navigate = useNavigate();
     const currentPage = pages.find((p) => p.id === currentPageId);
 
     if (!currentPage) return <div>Page not found</div>;
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white relative">
             {currentPage.elements.map((element) => (
                 <PreviewElement key={element.id} element={element} />
             ))}
+
+            <button
+                onClick={() => navigate('/editor')}
+                className="fixed bottom-4 right-4 bg-gray-900 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2 hover:bg-gray-800 transition-colors z-50"
+            >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Editor
+            </button>
         </div>
     );
 };
